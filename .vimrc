@@ -1,5 +1,7 @@
 " disable vi compatibility
 set nocompatible
+" auto-update a file
+set autoread
 " allow backspace in insert mode
 set backspace=indent,eol,start
 " set UTF-8 encoding
@@ -10,6 +12,9 @@ set termencoding=utf-8
 set autoindent
 " enhance command-line completion
 set wildmenu
+set wildmode=list:longest,full
+" prevent redraw while executing macros
+set lazyredraw
 " switch syntax highlighting off
 syntax off
 highlight LineNr NONE
