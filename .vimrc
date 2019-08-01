@@ -23,6 +23,8 @@ highlight CursorLine NONE
 set number
 " highlight matching braces
 set showmatch
+" highlight matching pairs of brackets (default "(:),{:},[:]")
+set matchpairs+=<:>
 " wrap lines at 120 chars
 set textwidth=120
 " configure tabwidth and insert spaces instead of tabs
