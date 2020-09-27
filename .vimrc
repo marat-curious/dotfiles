@@ -1,7 +1,15 @@
 " disable vi compatibility
 set nocompatible
+" add filetype, plugin, and indent support
+filetype plugin indent on
 " auto-update a file
 set autoread
+" prefer zsh for shell-related tasks
+set shell=/usr/bin/zsh
+" search relative to current file + directory
+set path=.,,**
+" tags relative to current file + directory
+set tags=./tags;,tags;
 " allow backspace in insert mode
 set backspace=indent,eol,start
 " set UTF-8 encoding
