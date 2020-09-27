@@ -4,8 +4,6 @@ set nocompatible
 filetype plugin indent on
 " auto-update a file
 set autoread
-" prefer zsh for shell-related tasks
-set shell=/usr/bin/zsh
 " search relative to current file + directory
 set path=.,,**
 " tags relative to current file + directory
