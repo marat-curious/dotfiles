@@ -1,7 +1,7 @@
 " disable vi compatibility
 set nocompatible
-" add filetype, plugin, and indent support
-filetype plugin indent on
+" add filetype and plugin support
+filetype plugin on
 " auto-update a file
 set autoread
 " search relative to current file + directory
