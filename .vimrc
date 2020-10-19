@@ -25,8 +25,6 @@ set wildmode=list:longest,full
 set lazyredraw
 " switch syntax highlighting off
 syntax off
-highlight LineNr NONE
-highlight CursorLine NONE
 " turn line numbers on
 set number
 " highlight matching braces
@@ -47,6 +45,10 @@ set laststatus=2
 set statusline+=%F\ %=%l\:%c
 " enable 256 color support
 set t_Co=256
+" set highlight-groups
+highlight LineNr NONE
+highlight CursorLine NONE
+highlight Pmenu ctermbg=Gray
 " centralize backups and swapfiles
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
