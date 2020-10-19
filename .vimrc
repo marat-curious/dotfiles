@@ -1,3 +1,5 @@
+" disable auto-loading of plugins
+set noloadplugins
 " disable vi compatibility
 set nocompatible
 " add filetype and plugin support
