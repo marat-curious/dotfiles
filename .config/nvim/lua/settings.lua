@@ -1,5 +1,7 @@
 HOME = os.getenv("HOME")
 
+-- disable cursor-styling
+vim.o.guicursor = ""
 -- disable auto-loading of plugins
 vim.o.loadplugins = false
 -- auto-update a file
@@ -18,7 +20,7 @@ vim.o.wildmode = "list:longest,full"
 -- prevent redraw while executing macros
 vim.o.lazyredraw = true
 -- switch syntax highlighting off
-syntax off
+vim.o.syntax = "off"
 -- highlight matching braces
 vim.o.showmatch = true
 -- highlight matching pairs of brackets (default "(:),{:},[:]")
