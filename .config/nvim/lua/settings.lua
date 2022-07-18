@@ -35,3 +35,6 @@ vim.o.statusline = vim.o.statusline .. "%F %=%l:%c"
 vim.o.undodir = HOME .. "/.vim/tmp/undo//"
 vim.o.backupdir = HOME .. "/.vim/backups//"
 vim.o.directory = HOME .. "/.vim/swaps//"
+
+vim.o.textwidth = 80
+vim.o.colorcolumn = "+1"
