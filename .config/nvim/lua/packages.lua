@@ -1,6 +1,5 @@
-local use = require("packer").use
-
-require("packer").startup(function()
-  use "wbthomason/packer.nvim"
-  use "neovim/nvim-lspconfig"
+require("packer").startup(function(use)
+  use("wbthomason/packer.nvim")
+  use("neovim/nvim-lspconfig")
+  use({ "catppuccin/nvim", as = "catppuccin" })
 end)
