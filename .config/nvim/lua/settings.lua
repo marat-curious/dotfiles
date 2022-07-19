@@ -38,3 +38,5 @@ vim.o.directory = HOME .. "/.vim/swaps//"
 
 vim.o.textwidth = 80
 vim.o.colorcolumn = "+1"
+
+vim.o.signcolumn = "yes"
