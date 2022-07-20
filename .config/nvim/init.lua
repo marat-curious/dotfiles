@@ -1,4 +1,4 @@
 require("settings")
-require("packages")
+require("plugins")
 require("lsp")
 require("colorscheme")
