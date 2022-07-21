@@ -6,6 +6,10 @@ compinit
 autoload -U bashcompinit
 bashcompinit
 
+# aliases
+alias vi="nvim"
+alias vim="nvim"
+
 # vi mode
 bindkey -v
 
