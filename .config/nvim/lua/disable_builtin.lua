@@ -1,4 +1,5 @@
-local builtin = {
+-- disable builtin plugins
+local builtin_plugins = {
   "2html_plugin",
   "getscript",
   "getscriptPlugin",
@@ -19,7 +20,6 @@ local builtin = {
   "zip",
   "zipPlugin"
 }
--- disable builtin plugins
-for _, plugin in pairs(builtin) do
+for _, plugin in pairs(builtin_plugins) do
   vim.g["loaded_" .. plugin] = 1
 end
