@@ -1,5 +1,4 @@
 require("settings")
 require("plugins")
-require("disable_builtin")
 require("lsp")
 require("treesitter")
