@@ -36,3 +36,5 @@ set.textwidth = 80
 set.colorcolumn = "+1"
 -- always show signcolumn
 set.signcolumn = "yes"
+-- global status line
+set.laststatus = 3

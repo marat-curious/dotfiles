@@ -1,4 +1,5 @@
 require("settings")
+require("highlights")
 require("plugins")
 require("lsp")
 require("treesitter")
