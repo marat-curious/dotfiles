@@ -1,3 +1,4 @@
+require("reset")
 require("settings")
 require("highlights")
 require("plugins")
