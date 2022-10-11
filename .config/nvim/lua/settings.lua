@@ -38,3 +38,5 @@ set.colorcolumn = "+1"
 set.signcolumn = "yes"
 -- global status line
 set.laststatus = 3
+-- hide command-line
+set.cmdheight = 0
