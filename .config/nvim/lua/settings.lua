@@ -1,6 +1,6 @@
 HOME = os.getenv("HOME")
 
-local set = vim.o
+local set = vim.opt
 
 -- disable cursor-styling
 set.guicursor = ""
@@ -20,13 +20,13 @@ set.lazyredraw = true
 -- highlight matching braces
 set.showmatch = true
 -- highlight matching pairs of brackets (default "(:),{:},[:]")
-set.matchpairs = set.matchpairs .. ",<:>"
+set.matchpairs:append {"<:>"}
 -- configure tabwidth and insert spaces instead of tabs
 set.softtabstop = 2
 set.shiftwidth = 2
 set.expandtab = true
 -- add full file path to statusline
-set.statusline = set.statusline .. "%F %=%l:%c"
+set.statusline = "%f %=%l:%c"
 -- centralize backups and swapfiles
 set.undodir = HOME .. "/.vim/tmp/undo//"
 set.backupdir = HOME .. "/.vim/backups//"
@@ -38,5 +38,3 @@ set.colorcolumn = "+1"
 set.signcolumn = "yes"
 -- global status line
 set.laststatus = 3
--- hide command-line
-set.cmdheight = 0
