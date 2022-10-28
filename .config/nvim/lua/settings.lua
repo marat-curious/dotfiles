@@ -1,40 +1,40 @@
 HOME = os.getenv("HOME")
 
-local set = vim.opt
+local opt = vim.opt
 
 -- disable cursor-styling
-set.guicursor = ""
+opt.guicursor = ""
 -- auto-update a file
-set.autoread = true
+opt.autoread = true
 -- set UTF-8 encoding
-set.encoding = "utf-8"
-set.fileencoding = "utf-8"
-set.termencoding = "utf-8"
+opt.encoding = "utf-8"
+opt.fileencoding = "utf-8"
+opt.termencoding = "utf-8"
 -- search relative to current file + directory
-set.path:append {"**"}
+opt.path:append {"**"}
 -- enhance command-line completion
-set.wildmenu = true
-set.wildmode = "list:longest,full"
+opt.wildmenu = true
+opt.wildmode = "list:longest,full"
 -- prevent redraw while executing macros
-set.lazyredraw = true
+opt.lazyredraw = true
 -- highlight matching braces
-set.showmatch = true
+opt.showmatch = true
 -- highlight matching pairs of brackets (default "(:),{:},[:]")
-set.matchpairs:append {"<:>"}
+opt.matchpairs:append {"<:>"}
 -- configure tabwidth and insert spaces instead of tabs
-set.softtabstop = 2
-set.shiftwidth = 2
-set.expandtab = true
+opt.softtabstop = 2
+opt.shiftwidth = 2
+opt.expandtab = true
 -- add full file path to statusline
-set.statusline = "%f %=%l:%c"
+opt.statusline = "%f %=%l:%c"
 -- centralize backups and swapfiles
-set.undodir = HOME .. "/.vim/tmp/undo//"
-set.backupdir = HOME .. "/.vim/backups//"
-set.directory = HOME .. "/.vim/swaps//"
+opt.undodir = HOME .. "/.vim/tmp/undo//"
+opt.backupdir = HOME .. "/.vim/backups//"
+opt.directory = HOME .. "/.vim/swaps//"
 -- set maximum width
-set.textwidth = 80
-set.colorcolumn = "+1"
+opt.textwidth = 80
+opt.colorcolumn = "+1"
 -- always show signcolumn
-set.signcolumn = "yes"
+opt.signcolumn = "yes"
 -- global status line
-set.laststatus = 3
+opt.laststatus = 3
