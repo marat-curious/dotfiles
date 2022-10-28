@@ -11,7 +11,7 @@ set.encoding = "utf-8"
 set.fileencoding = "utf-8"
 set.termencoding = "utf-8"
 -- search relative to current file + directory
-set.path = ".,,**"
+set.path:append {"**"}
 -- enhance command-line completion
 set.wildmenu = true
 set.wildmode = "list:longest,full"
