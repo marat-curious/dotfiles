@@ -38,3 +38,5 @@ opt.colorcolumn = "+1"
 opt.signcolumn = "yes"
 -- global status line
 opt.laststatus = 3
+-- enable 24-bit RGB color
+opt.termguicolors = true
