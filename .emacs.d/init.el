@@ -12,3 +12,4 @@
 (require 'init-macos-keys)
 (require 'init-settings)
 (require 'init-gui)
+(require 'init-completions)
