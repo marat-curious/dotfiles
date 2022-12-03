@@ -5,6 +5,7 @@
 (show-paren-mode 1)
 (tool-bar-mode 0)
 
+(set-frame-font "JetBrains Mono:size=14")
 (set-frame-parameter nil 'fullscreen 'maximized)
 
 (setq
