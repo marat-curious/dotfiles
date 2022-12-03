@@ -5,6 +5,8 @@
 (show-paren-mode 1)
 (tool-bar-mode 0)
 
+(set-frame-parameter nil 'fullscreen 'maximized)
+
 (setq
 	use-file-dialog nil
 	use-dialog-box nil
