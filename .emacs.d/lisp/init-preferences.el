@@ -1,4 +1,4 @@
-;; Settings -*- lexical-binding: t -*-
+;; Preferences -*- lexical-binding: t -*-
 
 (column-number-mode 1)
 
@@ -23,4 +23,8 @@
 	)
 	whitespace-line-column 80)
 
-(provide 'init-settings)
+(require 'ido)
+(ido-mode t)
+(ido-everywhere 1)
+
+(provide 'init-preferences)

@@ -1,9 +1,7 @@
 ;; Support for Go language -*- lexical-binding: t -*-
 
-(unless (package-installed-p 'go-mode)
-	(package-install 'go-mode))
-
-(add-auto-mode 'go-mode '(cons "\\.go\\'" 'go-mode))
+(use-package go-mode
+	:mode (cons "\\.go\\'" 'go-mode))
 
 (require 'go-mode)
 (require 'project)
