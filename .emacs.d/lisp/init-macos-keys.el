@@ -4,12 +4,12 @@
 
 (when *is-a-mac*
 	(setq
-		mac-alternate-modifier 'meta
-		; mac-right-alternate-modifier 'meta
-		mac-command-modifier 'control
-		; mac-right-command-modifier 'control
-		mac-control-modifier 'super
-		; mac-right-control-modifier 'super
+		mac-alternate-modifier 'super
+		; mac-right-alternate-modifier 'super
+		mac-command-modifier 'meta
+		; mac-right-command-modifier 'meta
+		mac-control-modifier 'control
+		; mac-right-control-modifier 'control
 		mac-function-modifier 'hyper))
 
 (provide 'init-macos-keys)

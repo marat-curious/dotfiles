@@ -7,7 +7,8 @@
 
 (setq
 	inhibit-startup-message t
-	initial-scratch-message nil)
+	initial-scratch-message nil
+	ring-bell-function 'ignore)
 
 (global-whitespace-mode 1)
 (setq
