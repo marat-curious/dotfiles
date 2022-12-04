@@ -2,6 +2,9 @@
 
 (column-number-mode 1)
 
+(setq-default indent-tabs-mode nil)
+(setq tab-width 4)
+
 (setq
 	inhibit-startup-message t
 	initial-scratch-message nil)
