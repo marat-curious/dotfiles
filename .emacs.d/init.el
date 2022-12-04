@@ -7,9 +7,14 @@
 
 (setq custom-file (locate-user-emacs-file "custom.el"))
 
+(require 'init-utils)
 (require 'init-theme)
 (require 'init-packages)
 (require 'init-macos-keys)
 (require 'init-settings)
 (require 'init-gui)
 (require 'init-completions)
+
+(require 'init-eglot)
+
+(require 'init-golang)
