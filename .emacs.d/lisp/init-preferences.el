@@ -2,6 +2,9 @@
 
 (column-number-mode 1)
 
+(global-set-key [?\C-h] 'delete-backward-char)
+(global-set-key [?\C-x ?h] 'help-command)
+
 (setq-default indent-tabs-mode nil)
 (setq tab-width 4)
 
