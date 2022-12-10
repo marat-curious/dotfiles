@@ -9,9 +9,10 @@
 (setq tab-width 4)
 
 (setq
-	inhibit-startup-message t
-	initial-scratch-message nil
-	ring-bell-function 'ignore)
+    inhibit-startup-message t
+    initial-scratch-message nil
+    ring-bell-function 'ignore
+    transient-mark-mode t)
 
 (global-whitespace-mode 1)
 (setq
