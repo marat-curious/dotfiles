@@ -14,6 +14,7 @@
 (require 'init-theme)
 (require 'init-gui)
 (require 'init-ido)
+(require 'init-tree-sitter)
 
 (require 'init-eglot)
 
