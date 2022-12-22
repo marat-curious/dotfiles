@@ -28,8 +28,4 @@
 	)
 	whitespace-line-column 80)
 
-(require 'ido)
-(ido-mode t)
-(ido-everywhere 1)
-
 (provide 'init-preferences)

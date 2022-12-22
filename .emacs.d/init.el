@@ -13,6 +13,7 @@
 (require 'init-macos-keys)
 (require 'init-theme)
 (require 'init-gui)
+(require 'init-ido)
 
 (require 'init-eglot)
 
