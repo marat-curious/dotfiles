@@ -5,10 +5,9 @@
 (setq package-enable-at-startup nil)
 
 ;; Standard package repositories
-(add-to-list 'package-archives '(
-	;; ("gnu" . "https://elpa.gnu.org/packages/")
-	("melpa" . "https://melpa.org/packages/")
-	("melpa-stable" . "https://stable.melpa.org/packages/")) t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; ("gnu" . "https://elpa.gnu.org/packages/")
+;; ("melpa-stable" . "https://stable.melpa.org/packages/")
 
 (package-initialize)
 
