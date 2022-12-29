@@ -19,3 +19,4 @@
 (require 'init-eglot)
 
 (require 'init-golang)
+(require 'init-typescript)
