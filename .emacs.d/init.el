@@ -10,6 +10,7 @@
 (require 'init-utils)
 (require 'init-packages)
 (require 'init-preferences)
+(require 'init-exec-path)
 (require 'init-macos-keys)
 (require 'init-theme)
 (require 'init-gui)
