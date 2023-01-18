@@ -8,6 +8,8 @@
 (setq custom-file (locate-user-emacs-file "custom.el"))
 (load-file custom-file)
 
+(setq initial-major-mode 'fundamental-mode)
+
 (require 'init-utils)
 (require 'init-packages)
 (require 'init-preferences)

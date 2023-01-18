@@ -7,6 +7,8 @@
 (global-set-key [?\C-h] 'delete-backward-char)
 (global-set-key [?\C-x ?h] 'help-command)
 
+(csetq load-prefer-newer t)
+
 (setq-default
     fill-column 80
     indent-tabs-mode nil
@@ -22,6 +24,10 @@
     initial-scratch-message nil
     ring-bell-function 'ignore
     transient-mark-mode t)
+
+;; disable right to left scripts
+(setq bidi-inhibit-bpa t
+    bidi-paragraph-direction 'left-to-right)
 
 (global-whitespace-mode 1)
 (setq
