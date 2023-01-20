@@ -21,6 +21,7 @@
 (require 'init-tree-sitter)
 
 (require 'init-eglot)
+(require 'init-flymake)
 
 (require 'init-golang)
 (require 'init-typescript)
