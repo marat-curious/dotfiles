@@ -19,6 +19,7 @@
 (require 'init-gui)
 (require 'init-ido)
 (require 'init-tree-sitter)
+(require 'init-whitespace)
 
 (require 'init-eglot)
 (require 'init-flymake)
