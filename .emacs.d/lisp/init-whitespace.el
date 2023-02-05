@@ -12,14 +12,14 @@
         indentation
         lines-tail
         newline
+        newline-mark
         space-after-tab
         space-before-tab
         spaces
+        space-mark
+        tabs
+        tab-mark
         trailing
         ))
-
-(add-to-list 'whitespace-style 'newline-mark)
-(add-to-list 'whitespace-style 'space-mark)
-(add-to-list 'whitespace-style 'tab-mark)
 
 (provide 'init-whitespace)
