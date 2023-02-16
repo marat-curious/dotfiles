@@ -9,6 +9,8 @@
 
 (csetq load-prefer-newer t)
 
+(global-display-fill-column-indicator-mode)
+
 (setq-default
     fill-column 80
     indent-tabs-mode nil
