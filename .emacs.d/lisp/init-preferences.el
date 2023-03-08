@@ -7,13 +7,12 @@
 (global-set-key [?\C-h] 'delete-backward-char)
 (global-set-key [?\C-x ?h] 'help-command)
 
-(csetq load-prefer-newer t)
-
 (global-display-fill-column-indicator-mode)
 
 (setq-default
     fill-column 80
     indent-tabs-mode nil
+    load-prefer-newer t
     tab-always-indent 'complete
     tab-width 4
     use-short-answers t)
