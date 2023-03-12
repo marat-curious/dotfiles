@@ -24,5 +24,6 @@
 (require 'init-eglot)
 (require 'init-flymake)
 
+(require 'init-elm)
 (require 'init-golang)
 (require 'init-typescript)

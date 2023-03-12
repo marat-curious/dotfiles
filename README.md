@@ -5,5 +5,6 @@
 - tree-sitter
 - tree-sitter-langs
 - eglot
+- elm-mode
 - go-mode
 - typescript-mode
