@@ -10,6 +10,7 @@
 
 (setq initial-major-mode 'fundamental-mode)
 
+(require 'init-rc)
 (require 'init-utils)
 (require 'init-packages)
 (require 'init-preferences)
