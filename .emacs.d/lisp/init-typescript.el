@@ -1,6 +1,6 @@
 ;; Support for TypeScript language -*- lexical-binding: t -*-
 
-(require 'typescript-mode)
+(rc/require 'typescript-mode)
 
 (define-derived-mode typescriptreact-mode typescript-mode "TypeScript TSX")
 

@@ -1,7 +1,7 @@
 ;; Tree-sitter -*- lexical-binding: t -*-
 
-(require 'tree-sitter)
-(require 'tree-sitter-langs)
+(rc/require 'tree-sitter)
+(rc/require 'tree-sitter-langs)
 
 (global-tree-sitter-mode)
 (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)

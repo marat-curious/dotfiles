@@ -1,5 +1,5 @@
 ;; Emacs LSP client -*- lexical-binding: t -*-
 
-(use-package eglot)
+(rc/require 'eglot)
 
 (provide 'init-eglot)

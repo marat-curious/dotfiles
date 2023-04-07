@@ -1,6 +1,6 @@
 ;; Set up exec-path to help Emacs find programs  -*- lexical-binding: t -*-
 
-(require 'exec-path-from-shell)
+(rc/require 'exec-path-from-shell)
 
 (with-eval-after-load 'exec-path-from-shell
     (dolist (var '("LANG" "LC_CTYPE"))

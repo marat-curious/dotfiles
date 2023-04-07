@@ -1,7 +1,7 @@
 ;; IDO mode -*- lexical-binding: t -*-
 
 (require 'ido)
-(require 'ido-completing-read+)
+(rc/require 'ido-completing-read+)
 
 (ido-mode t)
 (ido-everywhere 1)

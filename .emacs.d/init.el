@@ -10,9 +10,9 @@
 
 (setq initial-major-mode 'fundamental-mode)
 
+(require 'init-packages)
 (require 'init-rc)
 (require 'init-utils)
-(require 'init-packages)
 (require 'init-preferences)
 (require 'init-exec-path)
 (require 'init-macos-keys)
