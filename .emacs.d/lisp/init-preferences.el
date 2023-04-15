@@ -21,6 +21,7 @@
 (setq
     auto-save-default nil
     create-lockfiles nil
+    global-auto-revert-non-file-buffers t
     make-backup-files nil
     inhibit-startup-message t
     initial-scratch-message nil
