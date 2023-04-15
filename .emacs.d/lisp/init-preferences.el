@@ -1,6 +1,7 @@
 ;; Preferences -*- lexical-binding: t -*-
 
 (column-number-mode 1)
+(global-auto-revert-mode 1)
 
 (set-default-coding-systems 'utf-8)
 
