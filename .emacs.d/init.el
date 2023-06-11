@@ -27,4 +27,5 @@
 
 (require 'init-elm)
 (require 'init-golang)
+(require 'init-ocaml)
 (require 'init-typescript)
