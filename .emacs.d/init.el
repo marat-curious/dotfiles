@@ -3,6 +3,9 @@
 ;; This file bootstraps the configuration, which is divided into
 ;; a number of other files.
 
+(setq gc-cons-percentage 0.5
+      gc-cons-threshold (* 128 1024 1024))
+
 (eval-and-compile
   (defsubst emacs-path (path)
     (expand-file-name path user-emacs-directory))
@@ -37,3 +40,5 @@
 (require 'init-golang)
 (require 'init-ocaml)
 (require 'init-typescript)
+
+(add-hook 'after-init-hook #'garbage-collect t)
