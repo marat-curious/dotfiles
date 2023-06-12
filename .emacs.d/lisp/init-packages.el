@@ -19,4 +19,10 @@
   (setq use-package-always-ensure t
         use-package-expand-minimally t))
 
+(when init-file-debug
+  (setq use-package-verbose t
+        use-package-expand-minimally nil
+        use-package-compute-statistics t
+        debug-on-error t))
+
 (provide 'init-packages)
