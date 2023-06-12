@@ -3,7 +3,15 @@
 ;; This file bootstraps the configuration, which is divided into
 ;; a number of other files.
 
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(eval-and-compile
+  (defsubst emacs-path (path)
+    (expand-file-name path user-emacs-directory))
+
+  (setq package-enable-at-startup nil
+        load-path
+        (append (list (emacs-path "use-package"))
+                (delete-dups load-path)
+                (list (emacs-path "lisp")))))
 
 (setq custom-file (locate-user-emacs-file "custom.el"))
 (load-file custom-file)
