@@ -26,6 +26,7 @@
     inhibit-startup-message t
     initial-scratch-message nil
     ring-bell-function 'ignore
+    sentence-end-double-space nil
     transient-mark-mode t)
 
 ;; disable right to left scripts
