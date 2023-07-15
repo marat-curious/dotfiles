@@ -27,6 +27,7 @@
 (require 'init-preferences)
 (require 'init-exec-path)
 (require 'init-macos-keys)
+(require 'init-xclip)
 (require 'init-theme)
 (require 'init-gui)
 (require 'init-ido)
