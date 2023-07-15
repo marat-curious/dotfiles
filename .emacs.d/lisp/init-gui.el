@@ -1,9 +1,10 @@
 ;; Behaviour specific to non-TTY frames -*- lexical-binding: t -*-
 
 (menu-bar-mode 0)
-(scroll-bar-mode 0)
 (show-paren-mode 1)
 (tool-bar-mode 0)
+
+(when (display-graphic-p) (scroll-bar-mode nil))
 
 (set-frame-font "JetBrains Mono:size=14")
 (set-frame-parameter nil 'fullscreen 'maximized)
