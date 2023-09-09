@@ -42,4 +42,9 @@
 (require 'init-ocaml)
 (require 'init-typescript)
 
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
+
 (add-hook 'after-init-hook #'garbage-collect t)
