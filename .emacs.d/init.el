@@ -42,6 +42,13 @@
 (require 'init-ocaml)
 (require 'init-typescript)
 
+(use-package eldoc
+  :preface
+  (add-to-list 'display-buffer-alist
+               '("^\\*eldoc for" display-buffer-at-bottom
+                 (window-height . 4)))
+  (setq eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly))
+
 (use-package editorconfig
   :ensure t
   :config
