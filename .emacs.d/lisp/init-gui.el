@@ -6,7 +6,8 @@
 
 (when (display-graphic-p) (scroll-bar-mode nil))
 
-(set-frame-font "JetBrains Mono:size=14")
+;;(set-frame-font "JetBrains Mono:size=14")
+(set-frame-font "Iosevka Extended:size=16")
 (set-frame-parameter nil 'fullscreen 'maximized)
 
 (setq
