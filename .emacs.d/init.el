@@ -48,11 +48,11 @@
   :custom
   (dabbrev-ignored-buffer-regexps '("\\.\\(?:pdf\\|jpe?g\\|png\\)\\'")))
 
+(use-package flymake
+  :defer t)
+
 (use-package eldoc
   :preface
-  (add-to-list 'display-buffer-alist
-               '("^\\*eldoc for" display-buffer-at-bottom
-                 (window-height . 4)))
   (setq eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly))
 
 (use-package editorconfig
