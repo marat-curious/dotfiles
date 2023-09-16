@@ -42,6 +42,12 @@
 (require 'init-ocaml)
 (require 'init-typescript)
 
+(use-package dabbrev
+  :bind (("M-/" . dabbrev-completion)
+         ("C-M-/" . dabbrev-expand))
+  :custom
+  (dabbrev-ignored-buffer-regexps '("\\.\\(?:pdf\\|jpe?g\\|png\\)\\'")))
+
 (use-package eldoc
   :preface
   (add-to-list 'display-buffer-alist
