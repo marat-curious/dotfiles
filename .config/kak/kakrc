@@ -1,0 +1,12 @@
+#set global grepcmd 'rg -Hn'
+set global indentwidth 2
+set global tabstop 2
+
+add-highlighter global/ show-matching
+add-highlighter global/ regex \h+$ 0:Error
+
+set-option -add global ui_options terminal_status_on_top=true
+set-option -add global ui_options terminal_enable_mouse=false
+set-option -add global ui_options terminal_assistant=off
+
+hook global WinCreate ^[^*]+$ %{editorconfig-load}
