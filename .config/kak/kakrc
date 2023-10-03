@@ -2,6 +2,8 @@
 set global indentwidth 2
 set global tabstop 2
 
+colorscheme plain
+
 add-highlighter global/ show-matching
 add-highlighter global/ show-whitespaces
 add-highlighter global/ regex \h+$ 0:Error
@@ -10,4 +12,11 @@ set-option -add global ui_options terminal_status_on_top=true
 set-option -add global ui_options terminal_enable_mouse=false
 set-option -add global ui_options terminal_assistant=off
 
-hook global WinCreate ^[^*]+$ %{editorconfig-load}
+#hook global WinCreate ^[^*]+$ %{editorconfig-load}
+hook global BufOpenFile .* %{editorconfig-load}
+hook global BufNewFile .* %{editorconfig-load}
+
+set-face global CurSearch +u
+set-face global CurWord +b
+
+map global normal '#' :comment-line<ret>
