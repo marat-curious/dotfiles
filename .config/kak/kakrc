@@ -1,4 +1,5 @@
 set global grepcmd 'rg -Hn'
+# set global indentwidth 0
 set global indentwidth 2
 set global tabstop 2
 
@@ -23,5 +24,19 @@ set-face global CurWord +b
 
 map global normal '#' :comment-line<ret>
 map global normal '<a-#>' :comment-block<ret>
+
+# CTAGS: universal-ctags
+# set-option global ctagscmd "uctags -R --fields=+S"
+# set-option global readtagscmd "ureadtags"
+# map global normal <a-.> :ctags-search<ret>
+#
+# MAKE
+# define-command recompile %{
+#   write-all
+#   make
+# }
+# map global normal <c-m> ':make<ret>'
+# map global normal <c-r> ':recompile<ret>'
+# map global normal <c-n> ':make-next-error<ret>'
 
 source "%val{config}/lsp.kak"
