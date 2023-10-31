@@ -2,6 +2,7 @@ set global grepcmd 'rg -Hn'
 # set global indentwidth 0
 set global indentwidth 2
 set global tabstop 2
+set global disabled_hooks '.+-highlight'
 
 colorscheme plain
 
@@ -15,9 +16,13 @@ set-option -add global ui_options terminal_status_on_top=true
 set-option -add global ui_options terminal_enable_mouse=false
 set-option -add global ui_options terminal_assistant=off
 
+# Previous versions config rules
+set global ui_options ncurses_assistant=none
+set gloval ui_options ncurses_status_on_top=true
+
 # hook global WinCreate ^[^*]+$ %{editorconfig-load}
-hook global BufOpenFile .* %{editorconfig-load}
-hook global BufNewFile .* %{editorconfig-load}
+# hook global BufOpenFile .* %{editorconfig-load}
+# hook global BufNewFile .* %{editorconfig-load}
 
 set-face global CurSearch +u
 set-face global CurWord +b
@@ -38,5 +43,8 @@ map global normal '<a-#>' :comment-block<ret>
 # map global normal <c-m> ':make<ret>'
 # map global normal <c-r> ':recompile<ret>'
 # map global normal <c-n> ':make-next-error<ret>'
+
+map global <space> , -docstring 'leader'
+map global , <space>
 
 source "%val{config}/lsp.kak"
