@@ -22,9 +22,10 @@ set-option -add global ui_options ncurses_assistant=none
 set-option -add global ui_options ncurses_enable_mouse=false
 set-option -add global ui_options ncurses_status_on_top=true
 
-# hook global WinCreate ^[^*]+$ %{editorconfig-load}
-# hook global BufOpenFile .* %{editorconfig-load}
-# hook global BufNewFile .* %{editorconfig-load}
+hook global WinCreate ^[^*]+$ %{ add-highlighter window/ number-lines }
+
+hook global BufOpenFile .* %{editorconfig-load}
+hook global BufNewFile .* %{editorconfig-load}
 
 set-face global CurSearch +u
 set-face global CurWord +b
