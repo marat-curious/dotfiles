@@ -30,7 +30,6 @@
 (require 'init-xclip)
 (require 'init-theme)
 (require 'init-gui)
-(require 'init-ido)
 (require 'init-tree-sitter)
 (require 'init-whitespace)
 
@@ -39,6 +38,8 @@
 (require 'init-golang)
 (require 'init-ocaml)
 (require 'init-typescript)
+
+(fido-mode t)
 
 (use-package dabbrev
   :bind (("M-/" . dabbrev-completion)
