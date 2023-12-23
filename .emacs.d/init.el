@@ -35,8 +35,6 @@
 (require 'init-whitespace)
 
 (require 'init-eglot)
-(require 'init-flymake)
-
 (require 'init-elm)
 (require 'init-golang)
 (require 'init-ocaml)
@@ -49,7 +47,10 @@
   (dabbrev-ignored-buffer-regexps '("\\.\\(?:pdf\\|jpe?g\\|png\\)\\'")))
 
 (use-package flymake
-  :defer t)
+  :defer t
+  :custom
+  (define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
+  (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error))
 
 (use-package eldoc
   :preface
