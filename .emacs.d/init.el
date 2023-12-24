@@ -33,13 +33,15 @@
 (require 'init-tree-sitter)
 (require 'init-whitespace)
 
-(require 'init-eglot)
 (require 'init-elm)
 (require 'init-golang)
 (require 'init-ocaml)
 (require 'init-typescript)
 
 (fido-mode t)
+
+(use-package eglot
+  :ensure t)
 
 (use-package dabbrev
   :bind (("M-/" . dabbrev-completion)
