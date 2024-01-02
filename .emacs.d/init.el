@@ -36,12 +36,49 @@
 (require 'init-elm)
 (require 'init-golang)
 (require 'init-ocaml)
-(require 'init-typescript)
 
 (fido-mode t)
 
 (use-package eglot
-  :ensure t)
+  :defer t
+  :init
+  (setq eglot-stay-out-of '(flymake))
+  :bind (("M-TAB" . completion-at-point)
+        ;;("C-M-i" . completion-at-point)
+        ("M-g i" . imenu)
+        ("C-x h ." . display-local-help)
+        ("M-." . xref-find-definitions)
+        ("M-," . xref-go-back)
+        ("M-?" . xref-find-references))
+  :bind (:map eglot-mode-map
+              ("C-c e a" . eglot-code-actions)
+              ("C-c e r" . eglot-rename)
+              ("C-c e f" . eglot-format)))
+
+(use-package flymake
+  :defer t
+  :hook
+  (prog-mode . flymake-mode)
+  :bind ("C-x h ." . display-local-help)
+  :bind (:map flymake-mode-map
+              ("M-n" . flymake-goto-next-error)
+              ("M-p" . flymake-goto-prev-error)
+              ("M-l" . flymake-show-buffer-diagnostics)))
+
+(require 'init-typescript)
+
+(use-package vc
+  :defer t
+  :bind (("C-x v d" . vc-dir)
+         ("C-x v =" . vc-diff)
+         ("C-x v D" . vc-root-diff)
+         ("C-x v v" . vc-next-action))
+  :custom
+  (vc-command-messages t)
+  (vc-follow-symlinks t)
+  (vc-git-diff-switches '("-w" "-U3"))
+  (vc-handled-backends '(Git Hg))
+  (vc-make-backup-files t))
 
 (use-package dabbrev
   :bind (("M-/" . dabbrev-completion)
@@ -49,15 +86,14 @@
   :custom
   (dabbrev-ignored-buffer-regexps '("\\.\\(?:pdf\\|jpe?g\\|png\\)\\'")))
 
-(use-package flymake
-  :defer t
-  :custom
-  (define-key flymake-mode-map (kbd "M-n") 'flymake-goto-next-error)
-  (define-key flymake-mode-map (kbd "M-p") 'flymake-goto-prev-error))
-
 (use-package eldoc
+  :init
+  (global-eldoc-mode)
   :preface
-  (setq eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly))
+  (setq eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly)
+  :custom
+  (eldoc-echo-area-use-multiline-p 3)
+  (eldoc-echo-area-display-truncation-message nil))
 
 (use-package editorconfig
   :ensure t
