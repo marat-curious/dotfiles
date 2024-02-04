@@ -1,3 +1,7 @@
+;;; package --- Emacs configuration
+
+;;; Commentary: Configuration file
+
 ;; Load the configuration -*- lexical-binding: t -*-
 
 ;; This file bootstraps the configuration, which is divided into
@@ -28,32 +32,16 @@
 (require 'init-exec-path)
 (require 'init-macos-keys)
 (require 'init-xclip)
-(require 'init-theme)
 (require 'init-gui)
-(require 'init-tree-sitter)
 (require 'init-whitespace)
+
+(fido-mode t)
+
+(load-theme 'plain t)
 
 (require 'init-elm)
 (require 'init-golang)
 (require 'init-ocaml)
-
-(fido-mode t)
-
-(use-package eglot
-  :defer t
-  :init
-  (setq eglot-stay-out-of '(flymake))
-  :bind (("M-TAB" . completion-at-point)
-        ;;("C-M-i" . completion-at-point)
-        ("M-g i" . imenu)
-        ("C-x h ." . display-local-help)
-        ("M-." . xref-find-definitions)
-        ("M-," . xref-go-back)
-        ("M-?" . xref-find-references))
-  :bind (:map eglot-mode-map
-              ("C-c e a" . eglot-code-actions)
-              ("C-c e r" . eglot-rename)
-              ("C-c e f" . eglot-format)))
 
 (use-package flymake
   :defer t
@@ -65,7 +53,8 @@
               ("M-p" . flymake-goto-prev-error)
               ("M-l" . flymake-show-buffer-diagnostics)))
 
-(require 'init-typescript)
+;; to use in monorepo
+(setq project-vc-extra-root-markers '("package.json"))
 
 (use-package vc
   :defer t
@@ -99,5 +88,32 @@
   :ensure t
   :config
   (editorconfig-mode 1))
+
+;; M-x treesit-install-language-grammar [language]
+(setq treesit-language-source-alist
+      '((tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
+        (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")))
+
+(use-package tree-sitter
+  :ensure t)
+
+(use-package typescript-mode
+  :ensure t
+  :after tree-sitter
+  :mode (("\\.ts\\'" . typescript-ts-mode)
+         ("\\.tsx\\'" . tsx-ts-mode)))
+
+(use-package eglot
+  :bind (("M-TAB" . completion-at-point)
+        ;;("C-M-i" . completion-at-point)
+        ("M-g i" . imenu)
+        ("C-x h ." . display-local-help)
+        ("M-." . xref-find-definitions)
+        ("M-," . xref-go-back)
+        ("M-?" . xref-find-references))
+  :bind (:map eglot-mode-map
+              ("C-c e a" . eglot-code-actions)
+              ("C-c e r" . eglot-rename)
+              ("C-c e f" . eglot-format)))
 
 (add-hook 'after-init-hook #'garbage-collect t)
