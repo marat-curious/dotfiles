@@ -33,7 +33,6 @@
 (require 'init-macos-keys)
 (require 'init-xclip)
 (require 'init-gui)
-(require 'init-whitespace)
 
 (fido-mode t)
 
@@ -85,7 +84,6 @@
   (eldoc-echo-area-display-truncation-message nil))
 
 (use-package editorconfig
-  :ensure t
   :config
   (editorconfig-mode 1))
 
@@ -94,11 +92,9 @@
       '((tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
         (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")))
 
-(use-package tree-sitter
-  :ensure t)
+(use-package tree-sitter)
 
 (use-package typescript-mode
-  :ensure t
   :after tree-sitter
   :mode (("\\.ts\\'" . typescript-ts-mode)
          ("\\.tsx\\'" . tsx-ts-mode)))
@@ -115,5 +111,27 @@
               ("C-c e a" . eglot-code-actions)
               ("C-c e r" . eglot-rename)
               ("C-c e f" . eglot-format)))
+
+(use-package whitespace
+  :config
+  (global-whitespace-mode 1)
+  :custom
+  (setq whitespace-line-column 80)
+  (setq whitespace-style
+      '(
+        empty
+        face
+        indentation
+        lines-tail
+        newline
+        newline-mark
+        space-after-tab
+        space-before-tab
+        spaces
+        space-mark
+        tabs
+        tab-mark
+        trailing
+        )))
 
 (add-hook 'after-init-hook #'garbage-collect t)
