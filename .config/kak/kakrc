@@ -15,17 +15,17 @@ add-highlighter global/ regex \h+$ 0:Error
 add-highlighter global/ wrap -word -indent
 add-highlighter global/ column '%opt{autowrap_column}' default,red
 
-# set-option -add global ui_options terminal_status_on_top=true
-# set-option -add global ui_options terminal_enable_mouse=false
-# set-option -add global ui_options terminal_assistant=none
+set-option -add global ui_options terminal_status_on_top=true
+set-option -add global ui_options terminal_enable_mouse=false
+set-option -add global ui_options terminal_assistant=none
 # set-option -add global ui_options terminal_padding_char=/ # More fancy examples: ▚ ╳ ╱ ┼
 # set-option -add global ui_options terminal_padding_fill=yes
-# set-option -add global ui_options terminal_set_title=no
+set-option -add global ui_options terminal_set_title=no
 
 # Previous versions config rules
-set-option -add global ui_options ncurses_assistant=none
-set-option -add global ui_options ncurses_enable_mouse=false
-set-option -add global ui_options ncurses_status_on_top=true
+# set-option -add global ui_options ncurses_assistant=none
+# set-option -add global ui_options ncurses_enable_mouse=false
+# set-option -add global ui_options ncurses_status_on_top=true
 
 hook global WinCreate ^[^*]+$ %{ add-highlighter window/ number-lines }
 
