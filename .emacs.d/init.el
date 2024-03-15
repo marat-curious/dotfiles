@@ -1,11 +1,12 @@
 ;;; package --- Emacs configuration
-
 ;;; Commentary: Configuration file
 
-;; Load the configuration -*- lexical-binding: t -*-
+;; -*- coding: utf-8; lexical-binding: t -*-
 
 ;; This file bootstraps the configuration, which is divided into
 ;; a number of other files.
+
+;;; Code:
 
 (setq gc-cons-percentage 0.5
       gc-cons-threshold (* 128 1024 1024))
@@ -22,6 +23,23 @@
 
 (setq custom-file (locate-user-emacs-file "custom.el"))
 (load-file custom-file)
+
+(setq
+ sentence-end-double-space nil
+ save-interprogram-paste-before-kill t
+ use-dialog-box nil
+ mark-even-if-inactive nil
+ case-fold-search nil
+ fast-but-imprecise-scrolling t
+ load-prefer-newer t)
+
+(set-charset-priority 'unicode)
+(prefer-coding-system 'utf-8-unix)
+
+(setq
+ make-backup-files nil
+ auto-save-default nil
+ create-lockfiles nil)
 
 (setq initial-major-mode 'fundamental-mode)
 
@@ -80,8 +98,9 @@
   :preface
   (setq eldoc-documentation-strategy 'eldoc-documentation-compose-eagerly)
   :custom
-  (eldoc-echo-area-use-multiline-p 3)
-  (eldoc-echo-area-display-truncation-message nil))
+  (eldoc-echo-area-display-truncation-message nil)
+  (eldoc-echo-area-prefer-doc-buffer t)
+  (eldoc-echo-area-use-multiline-p 3))
 
 (use-package editorconfig
   :config
@@ -100,8 +119,9 @@
          ("\\.tsx\\'" . tsx-ts-mode)))
 
 (use-package eglot
-  :bind (("M-TAB" . completion-at-point)
-        ;;("C-M-i" . completion-at-point)
+  :hook ((typescript-mode . eglot-ensure))
+  :bind (;;("M-TAB" . completion-at-point)
+        ("C-M-i" . completion-at-point)
         ("M-g i" . imenu)
         ("C-x h ." . display-local-help)
         ("M-." . xref-find-definitions)
@@ -110,7 +130,16 @@
   :bind (:map eglot-mode-map
               ("C-c e a" . eglot-code-actions)
               ("C-c e r" . eglot-rename)
-              ("C-c e f" . eglot-format)))
+              ("C-c e f" . eglot-format))
+  :custom (eglot-autoshutdown t))
+
+(use-package yasnippet
+  :defer
+  :hook ((prog-mode) . yas-minor-mode-on)
+  :custom (yas-prompt-function '(yas-completing-prompt)))
+
+(use-package yasnippet-snippets
+  :after yasnippet)
 
 (use-package whitespace
   :config
@@ -135,3 +164,7 @@
         )))
 
 (add-hook 'after-init-hook #'garbage-collect t)
+
+(provide 'init)
+
+;;; init.el ends here
