@@ -139,11 +139,12 @@
   :custom (yas-prompt-function '(yas-completing-prompt)))
 
 (use-package yasnippet-snippets
+  :defer
   :after yasnippet)
 
 (use-package whitespace
-  :config
-  (global-whitespace-mode 1)
+  ;;:config
+  ;;(global-whitespace-mode 1)
   :custom
   (setq whitespace-line-column 80)
   (setq whitespace-style
