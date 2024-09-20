@@ -1,5 +1,4 @@
 set global grepcmd 'rg -Hn'
-# set global indentwidth 0
 set global indentwidth 2
 set global tabstop 2
 
@@ -27,7 +26,7 @@ set-option -add global ui_options terminal_set_title=no
 # set-option -add global ui_options ncurses_enable_mouse=false
 # set-option -add global ui_options ncurses_status_on_top=true
 
-hook global WinCreate ^[^*]+$ %{ add-highlighter window/ number-lines }
+# hook global WinCreate ^[^*]+$ %{ add-highlighter window/ number-lines }
 
 hook global BufOpenFile .* %{editorconfig-load}
 hook global BufNewFile .* %{editorconfig-load}
@@ -55,4 +54,4 @@ map global normal '<a-#>' :comment-block<ret>
 map global normal <space> , -docstring 'leader'
 map global normal , <space>
 
-source "%val{config}/lsp.kak"
+# source "%val{config}/lsp.kak"
