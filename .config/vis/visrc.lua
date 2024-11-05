@@ -9,12 +9,10 @@ require('vis');
 vis.events.subscribe(vis.events.INIT, function()
   vis:command('set ignorecase')
   vis:command('set autoindent')
-  -- command('set theme "plain-theme"')
+  vis:command('set theme "plain"')
 end)
 
 -- window cofiguration
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
-  vis:command('set colorcolumn 80')
-  vis:command('set show-tabs on')
   vis:command('set expandtab on')
 end)
