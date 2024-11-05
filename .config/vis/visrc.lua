@@ -14,5 +14,7 @@ end)
 
 -- window cofiguration
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
+  vis:command('set syntax off')
+  vis:command('set tabwidth 2')
   vis:command('set expandtab on')
 end)
