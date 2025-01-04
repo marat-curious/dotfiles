@@ -4,3 +4,6 @@ eln-cache
 ido.last
 *-theme.el
 custom.el
+
+tree-sitter
+.config/vis/themes
