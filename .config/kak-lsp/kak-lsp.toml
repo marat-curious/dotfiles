@@ -1,5 +1,9 @@
-[language.typescript]
-filetypes = ["typescript"]
-root = ["package.json"]
+[language_ids]
+javascript = "javascriptreact"
+typescript = "typescriptreact"
+
+[language_server.typescript]
+filetypes = ["javascript", "typescript"]
+root = ["package.json", "tsconfig.json"]
 command = "typescript-language-server"
 args = ["--stdio"]

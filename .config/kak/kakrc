@@ -1,14 +1,16 @@
-set global grepcmd 'rg -Hn'
-set global indentwidth 2
-set global tabstop 2
+set-option global indentwidth 2
+set-option global tabstop 2
 
-set global disabled_hooks '.*-(highlight|insert)'
+set-option global grepcmd "rg --vimgrep --hidden"
+define-command find -menu -params 1 -shell-script-candidates %{fdfind --ignore-file "$kak_opt_ignored_files"} %{edit %arg{1}}
 
-set global autoinfo command|onkey
+set-option global autocomplete prompt
+set-option global autoinfo command|onkey
+set-option global disabled_hooks ".*-(highlight|insert)"
 
 colorscheme plain
 
-add-highlighter global/ show-matching
+add-highlighter global/ show-matching -previous
 add-highlighter global/ show-whitespaces
 add-highlighter global/ regex \h+$ 0:Error
 add-highlighter global/ wrap -word -indent
@@ -34,8 +36,8 @@ hook global BufNewFile .* %{editorconfig-load}
 set-face global CurSearch +u
 set-face global CurWord +b
 
-map global normal '#' :comment-line<ret>
-map global normal '<a-#>' :comment-block<ret>
+map global normal "#" :comment-line<ret>
+map global normal "<a-#>" :comment-block<ret>
 
 # CTAGS: universal-ctags
 # set-option global ctagscmd "uctags -R --fields=+S"
@@ -51,7 +53,8 @@ map global normal '<a-#>' :comment-block<ret>
 # map global normal <c-r> ':recompile<ret>'
 # map global normal <c-n> ':make-next-error<ret>'
 
-map global normal <space> , -docstring 'leader'
-map global normal , <space>
+# map global normal <space> , -docstring 'leader'
+# map global normal , <space>
+map -docstring "enter user mode" global user <space> :
 
 # source "%val{config}/lsp.kak"
