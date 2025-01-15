@@ -1,5 +1,5 @@
-set-option global indentwidth 2
-set-option global tabstop 2
+set-option global indentwidth 4
+set-option global tabstop 4
 
 set-option global grepcmd "rg --vimgrep --hidden"
 define-command find -menu -params 1 -shell-script-candidates %{fdfind --ignore-file "$kak_opt_ignored_files"} %{edit %arg{1}}
@@ -56,5 +56,10 @@ map global normal "<a-#>" :comment-block<ret>
 # map global normal <space> , -docstring 'leader'
 # map global normal , <space>
 map -docstring "enter user mode" global user <space> :
+
+hook global WinSetOption filetype=(?!makefile).* %{
+  map global insert <tab> "<a-;><a-gt>"
+  map global insert <s-tab> "<a-;><a-lt>"
+}
 
 # source "%val{config}/lsp.kak"
