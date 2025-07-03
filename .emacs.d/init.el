@@ -71,7 +71,6 @@
 (require 'init-preferences)
 (require 'init-exec-path)
 (require 'init-macos-keys)
-(require 'init-xclip)
 (require 'init-gui)
 
 (fido-mode t)
@@ -185,6 +184,11 @@
         tab-mark
         trailing
         )))
+
+(use-package xclip
+  :unless (display-graphic-p)
+  :config
+  (xclip-mode 1))
 
 (add-hook 'after-init-hook #'garbage-collect t)
 
