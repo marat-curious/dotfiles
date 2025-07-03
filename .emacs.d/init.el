@@ -11,6 +11,29 @@
 (setq gc-cons-percentage 0.5
       gc-cons-threshold (* 128 1024 1024))
 
+(require 'package)
+
+;; Standard package repositories
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+;; (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
+
+(package-initialize)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-and-compile
+  (setq use-package-always-ensure t
+        use-package-expand-minimally t))
+
+(when init-file-debug
+  (setq use-package-verbose t
+        use-package-expand-minimally nil
+        use-package-compute-statistics t
+        debug-on-error t))
+
 (eval-and-compile
   (defsubst emacs-path (path)
     (expand-file-name path user-emacs-directory))
@@ -22,7 +45,7 @@
                 (list (emacs-path "lisp")))))
 
 (setq custom-file (locate-user-emacs-file "custom.el"))
-(load-file custom-file)
+;; (load-file custom-file)
 
 (setq
  sentence-end-double-space nil
@@ -43,7 +66,6 @@
 
 (setq initial-major-mode 'fundamental-mode)
 
-(require 'init-packages)
 (require 'init-rc)
 (require 'init-utils)
 (require 'init-preferences)
