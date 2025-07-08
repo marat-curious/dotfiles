@@ -1,10 +1,8 @@
-;;; package --- Emacs configuration
-;;; Commentary: Configuration file
+;;; package --- Emacs configuration -*- coding: utf-8; lexical-binding: t; -*-
 
-;; -*- coding: utf-8; lexical-binding: t -*-
+;;; Commentary:
 
-;; This file bootstraps the configuration, which is divided into
-;; a number of other files.
+;; Configuration file
 
 ;;; Code:
 
@@ -14,9 +12,9 @@
 (require 'package)
 
 ;; Standard package repositories
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
-;; (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+;; (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
 
 (package-initialize)
 
@@ -45,7 +43,7 @@
                 (list (emacs-path "lisp")))))
 
 (setq custom-file (locate-user-emacs-file "custom.el"))
-;; (load-file custom-file)
+(load-file custom-file)
 
 (setq
  sentence-end-double-space nil
@@ -77,8 +75,6 @@
 
 (load-theme 'plain t)
 
-(require 'init-elm)
-(require 'init-golang)
 (require 'init-ocaml)
 
 (use-package flymake
@@ -132,7 +128,11 @@
       '((tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
         (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")))
 
-(use-package tree-sitter)
+(use-package tree-sitter
+  :defer 1)
+
+(use-package tree-sitter-langs
+  :after tree-sitter)
 
 (use-package typescript-mode
   :after tree-sitter
@@ -185,10 +185,11 @@
         trailing
         )))
 
-(use-package xclip
-  :unless (display-graphic-p)
-  :config
-  (xclip-mode 1))
+(use-package elm-mode
+  :defer 1)
+
+(use-package go-mode
+  :defer 1)
 
 (add-hook 'after-init-hook #'garbage-collect t)
 
