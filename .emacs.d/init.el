@@ -200,13 +200,36 @@
          ("C-c M-x ". consult-mode-command)
          ("C-c h" . consult-history)
          ("C-c m" . consult-man)
-         ("C-c i" . consult-info)
-         ))
+         ("C-c i" . consult-info)))
 
 (use-package orderless
   :custom
   (completion-styles '(orderless basic))
   (completion-category-overrides '(file (styles basic partial-completion))))
+
+(use-package corfu
+  :init
+  (global-corfu-mode))
+
+(use-package cape
+  :bind ("C-c p" . cape-prefix-map)
+  :init
+  (add-hook 'completion-at-point-function #'cape-dabbrev)
+  (add-hook 'completion-at-point-function #'cape-file)
+  (add-hook 'completion-at-point-function #'cape-elisp-block)
+  (add-hook 'completion-at-point-function #'cape-history))
+
+(setq completion-category-overrides '((eglot (styles orderless))
+                                      (eglot-capf (styles orderless))))
+
+(use-package affe
+  :config
+  (consult-customize affe-grep :preview-key "M-."))
+
+(defun affe-orderless-regexp-compiler (input _type _ignorecase)
+  (setq input (cdr (orderless-compile input)))
+  (cons input (apply-partially #'orderless--highlight input t)))
+(setq affe-regexp-compiler #'affe-orderless-regexp-compiler)
 
 (global-display-line-numbers-mode)
 
