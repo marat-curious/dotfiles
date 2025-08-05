@@ -16,11 +16,13 @@
 ;; (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 ;; (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
 
-(package-initialize)
-
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
-  (package-install 'use-package))
+  (package-install 'use-package)
+  (eval-when-compile
+    (unless (bound-and-true-p package--initialized)
+      (package-initialize))
+    (require 'use-package)))
 
 (eval-and-compile
   (setq use-package-always-ensure t
@@ -52,7 +54,8 @@
  mark-even-if-inactive nil
  case-fold-search nil
  fast-but-imprecise-scrolling t
- load-prefer-newer t)
+ load-prefer-newer t
+ show-trailing-whitespace t)
 
 (set-charset-priority 'unicode)
 (prefer-coding-system 'utf-8-unix)
@@ -71,7 +74,7 @@
 (require 'init-macos-keys)
 (require 'init-gui)
 
-(fido-mode t)
+;;(fido-mode t)
 
 (load-theme 'plain t)
 
@@ -164,8 +167,8 @@
   :after yasnippet)
 
 (use-package whitespace
-  ;;:config
-  ;;(global-whitespace-mode 1)
+  :config
+  (global-whitespace-mode t)
   :custom
   (setq whitespace-line-column 80)
   (setq whitespace-style
@@ -184,6 +187,28 @@
         tab-mark
         trailing
         )))
+
+(use-package vertico
+  :init (vertico-mode))
+(global-set-key (kbd "M-x") 'execute-extended-command)
+
+(use-package marginalia
+  :init (marginalia-mode))
+
+(use-package consult
+  :bind (;; C-c bindings in `mode-specific-map
+         ("C-c M-x ". consult-mode-command)
+         ("C-c h" . consult-history)
+         ("C-c m" . consult-man)
+         ("C-c i" . consult-info)
+         ))
+
+(use-package orderless
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '(file (styles basic partial-completion))))
+
+(global-display-line-numbers-mode)
 
 (use-package elm-mode
   :defer 1)
