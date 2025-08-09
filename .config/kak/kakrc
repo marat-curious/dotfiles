@@ -1,8 +1,11 @@
-set-option global indentwidth 4
-set-option global tabstop 4
+# Kakoune
+# https://github.com/mawww/kakoune
 
 set-option global grepcmd "rg --vimgrep --hidden"
 define-command find -menu -params 1 -shell-script-candidates %{fdfind --ignore-file "$kak_opt_ignored_files"} %{edit %arg{1}}
+
+set-option global indentwidth 4
+set-option global tabstop 4
 
 set-option global autocomplete prompt
 set-option global autoinfo command|onkey
@@ -62,4 +65,5 @@ hook global WinSetOption filetype=(?!makefile).* %{
   map global insert <s-tab> "<a-;><a-lt>"
 }
 
-# source "%val{config}/lsp.kak"
+source "%val{config}/lsp.kak"
+source "%val{config}/tree-sitter.kak"
