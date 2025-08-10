@@ -31,7 +31,7 @@ set-option -add global ui_options terminal_set_title=no
 # set-option -add global ui_options ncurses_enable_mouse=false
 # set-option -add global ui_options ncurses_status_on_top=true
 
-# hook global WinCreate ^[^*]+$ %{ add-highlighter window/ number-lines }
+hook global WinCreate ^[^*]+$ %{ add-highlighter window/ number-lines -separator " " }
 
 hook global BufOpenFile .* %{editorconfig-load}
 hook global BufNewFile .* %{editorconfig-load}
@@ -42,20 +42,6 @@ set-face global CurWord +b
 map global normal "#" :comment-line<ret>
 map global normal "<a-#>" :comment-block<ret>
 
-# CTAGS: universal-ctags
-# set-option global ctagscmd "uctags -R --fields=+S"
-# set-option global readtagscmd "ureadtags"
-# map global normal <a-.> :ctags-search<ret>
-#
-# MAKE
-# define-command recompile %{
-#   write-all
-#   make
-# }
-# map global normal <c-m> ':make<ret>'
-# map global normal <c-r> ':recompile<ret>'
-# map global normal <c-n> ':make-next-error<ret>'
-
 # map global normal <space> , -docstring 'leader'
 # map global normal , <space>
 map -docstring "enter user mode" global user <space> :
@@ -65,5 +51,7 @@ hook global WinSetOption filetype=(?!makefile).* %{
   map global insert <s-tab> "<a-;><a-lt>"
 }
 
+# source "%val{config}/ctags.kak"
+# source "%val{config}/make.kak"
 source "%val{config}/lsp.kak"
 source "%val{config}/tree-sitter.kak"
