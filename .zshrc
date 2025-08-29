@@ -6,6 +6,8 @@ autoload -U compinit
 compinit
 autoload -U bashcompinit
 bashcompinit
+autoload -U select-word-style
+select-word-style bash
 
 # vi [-v] or emacs [-e] mode
 bindkey -e
@@ -16,4 +18,4 @@ bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
 
 # prompt
-export PROMPT="%~%f %# "
+export PROMPT="%~%f [%?] %# "
