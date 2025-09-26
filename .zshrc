@@ -19,3 +19,15 @@ bindkey '^r' history-incremental-search-backward
 
 # prompt
 export PROMPT="%~%f [%?] %# "
+
+# kcr (kakoune.cr) - https://github.com/alexherbo2/kakoune.cr
+alias K='kcr-fzf-shell'
+alias KK='K --working-directory .'
+alias k='kcr edit'
+alias ks='kcr shell --session'
+alias kl='kcr list'
+alias a='kcr attach'
+alias :f='kcr fzf files'
+alias f:='KK kcr fzf files'
+alias :g='kcr fzf grep'
+alias g:='KK kcr fzf grep'
