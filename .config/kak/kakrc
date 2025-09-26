@@ -31,7 +31,7 @@ set-option -add global ui_options terminal_set_title=no
 # set-option -add global ui_options ncurses_enable_mouse=false
 # set-option -add global ui_options ncurses_status_on_top=true
 
-hook global WinCreate ^[^*]+$ %{ add-highlighter window/ number-lines -separator " " }
+hook global WinCreate ^[^*]+$ %{add-highlighter window/ number-lines -separator " "}
 
 hook global BufOpenFile .* %{editorconfig-load}
 hook global BufNewFile .* %{editorconfig-load}
@@ -54,4 +54,5 @@ hook global WinSetOption filetype=(?!makefile).* %{
 # source "%val{config}/ctags.kak"
 # source "%val{config}/make.kak"
 source "%val{config}/lsp.kak"
-source "%val{config}/tree-sitter.kak"
+# source "%val{config}/tree-sitter.kak"
+source "%val{config}/kcr.kak"
