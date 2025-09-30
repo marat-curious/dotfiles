@@ -1,10 +1,15 @@
 export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
+#history
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+
 # autocomplit
-autoload -U compinit
+autoload -Uz compinit
 compinit
-autoload -U bashcompinit
+autoload -Uz bashcompinit
 bashcompinit
 autoload -U select-word-style
 select-word-style bash
