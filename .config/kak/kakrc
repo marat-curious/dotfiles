@@ -2,7 +2,9 @@
 # https://github.com/mawww/kakoune
 
 set-option global grepcmd "rg --vimgrep --hidden"
-define-command find -menu -params 1 -shell-script-candidates %{fdfind --ignore-file "$kak_opt_ignored_files"} %{edit %arg{1}}
+
+define-command find -docstring "find files" -params 1 %{ edit %arg{1} }
+complete-command find shell-script-candidates %{fdfind --type file --ignore-file "$kak_opt_ignored_files"}
 
 set-option global indentwidth 4
 set-option global tabstop 4
