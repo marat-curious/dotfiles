@@ -11,6 +11,10 @@ set-option global autocomplete prompt
 set-option global autoinfo command|onkey
 set-option global disabled_hooks ".*-(highlight|insert)"
 
+set-option global jumpclient jump
+set-option global toolsclient tools
+set-option global docsclient docs
+
 colorscheme plain
 
 add-highlighter global/ show-matching -previous
@@ -55,4 +59,3 @@ hook global WinSetOption filetype=(?!makefile).* %{
 # source "%val{config}/make.kak"
 source "%val{config}/lsp.kak"
 # source "%val{config}/tree-sitter.kak"
-source "%val{config}/kcr.kak"
