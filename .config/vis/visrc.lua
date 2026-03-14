@@ -7,13 +7,16 @@ require('vis');
 
 -- editor configuration
 vis.events.subscribe(vis.events.INIT, function()
-  vis:command('set ignorecase')
-  vis:command('set autoindent')
-  vis:command('set theme "plain"')
 end)
 
 -- window cofiguration
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
+  vis:command('set ignorecase on')
+  vis:command('set autoindent on')
   vis:command('set tabwidth 4')
   vis:command('set expandtab on')
+  vis:command('set numbers on')
+  vis:command('set showspaces on')
+  vis:command('set showtabs on')
+  vis:command('set theme "plain"')
 end)
