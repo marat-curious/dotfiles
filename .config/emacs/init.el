@@ -8,6 +8,12 @@
 
 ;;; Code:
 
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(eval-when-compile
+  (require 'use-package))
+
 (eval-and-compile
   (defsubst emacs-path (path)
     (expand-file-name path user-emacs-directory))
@@ -44,8 +50,6 @@
   (tool-bar-mode nil)
   (visible-bell t)
   (x-stretch-cursor t)
-
-  ;; unknown
   (case-fold-search nil)
   (fast-but-imprecise-scrolling t)
   (fido-mode t)
@@ -106,21 +110,15 @@
    use-short-answers t
    window-resize-pixelwise t)
 
+  (load-theme 'plain t)
+
   (prefer-coding-system 'utf-8-unix)
   (set-charset-priority 'unicode)
   (set-default-coding-systems 'utf-8-unix)
   (set-keyboard-coding-system 'utf-8-unix)
   (set-language-environment "utf-8")
-  (set-terminal-coding-system 'utf-8-unix))
+  (set-terminal-coding-system 'utf-8-unix)
 
-(use-package custom
-  :custom
-  (custom-file (locate-user-emacs-file "custom.el"))
-  :init
-  (load custom-file :noerror))
-
-(use-package personal
-  :demand t
   :custom
   ;; (set-frame-font "Google Sans Code:size=14")
   ;; (set-frame-font "JetBrains Mono:size=14")
@@ -128,9 +126,13 @@
   (set-frame-parameter nil 'fullscreen 'maximized)
 
   (global-set-key [?\C-h] 'delete-backward-char)
-  (global-set-key [?\C-x ?h] 'help-command)
+  (global-set-key [?\C-x ?h] 'help-command))
+
+(use-package custom
+  :custom
+  (custom-file (locate-user-emacs-file "custom.el"))
   :init
-  (load-theme 'plain t))
+  (load custom-file :noerror))
 
 (use-package eldoc
   :delight eldoc-mode
@@ -168,33 +170,41 @@
 
 (use-package flymake
   :defer t
+  :preface
+  (defvar flymake-prefix-map (make-sparse-keymap))
+  (fset 'flymake-prefix-map flymake-prefix-map)
   :hook
   (prog-mode . flymake-mode)
-  :bind ("C-x h ." . display-local-help)
-  :bind (:map flymake-mode-map
-              ("M-n" . flymake-goto-next-error)
-              ("M-p" . flymake-goto-prev-error)
-              ("M-l" . flymake-show-buffer-diagnostics)))
+  :bind (:map ctl-x-map
+              ("!" . flymake-prefix-map)
+              :map flymake-prefix-map
+              ("l" . flymake-show-buffer-diagnostics)
+              ("n" . flymake-goto-next-error)
+              ("p" . flymake-goto-prev-error))
+  :custom
+  (flymake-fringe-indicator-position 'right-fringe)
+  (flymake-mode-line-lighter "FlyM")
+  :config
+  (setq elisp-flymake-byte-compile-load-path (cons "./" load-path)))
 
 (use-package eglot
   :hook ((typescript-mode . eglot-ensure))
-  :bind (;;("M-TAB" . completion-at-point)
-        ("C-M-i" . completion-at-point)
-        ("M-g i" . imenu)
-        ("C-x h ." . display-local-help)
-        ("M-." . xref-find-definitions)
-        ("M-," . xref-go-back)
-        ("M-?" . xref-find-references))
   :bind (:map eglot-mode-map
-              ("C-c e a" . eglot-code-actions)
-              ("C-c e r" . eglot-rename)
-              ("C-c e f" . eglot-format))
+              ("C-e M-x" . eglot-code-actions)
+              ("C-e c" . completion-at-point)
+              ("C-e m" . imenu)
+              ("C-e h" . display-local-help)
+              ("C-e ." . xref-find-definitions)
+              ("C-e ," . xref-go-back)
+              ("C-e ?" . xref-find-references)
+              ("C-e r" . eglot-rename)
+              ("C-e f" . eglot-format))
   :custom (eglot-autoshutdown t))
 
 ;;; Completion
 
 (use-package vertico
-  :init (vertico-mode)
+  :ensure t
   :bind (:map vertico-map
               ("M-RET" . vertico-exit-input))
   :hook (after-init . vertico-mode)
@@ -210,11 +220,15 @@
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
 
 (use-package orderless
+  :ensure t
   :custom
   (completion-styles '(orderless basic))
-  (completion-category-overrides '(file (styles basic partial-completion))))
+  (completion-category-defaults nil)
+  (completion-category-overrides '((file (styles basic partial-completion))))
+  (completion-pcm-leading-wildcard t))
 
 (use-package marginalia
+  :ensure t
   :hook (after-init . marginalia-mode))
 
 (use-package consult
@@ -234,6 +248,7 @@
   (setq completion-in-region-function #'consult-completion-in-region))
 
 (use-package corfu
+  :ensure t
   :bind (:map corfu-map
               ("TAB" . corfu-next)
               ([tab] . corfu-next)
@@ -283,6 +298,7 @@
                                         (eglot-capf (styles orderless)))))
 
 (use-package affe
+  :ensure t
   :config
   (consult-customize affe-grep :preview-key "M-.")
   (defun affe-orderless-regexp-compiler (input _type _ignorecase)
@@ -385,7 +401,8 @@ specifying a source code block language name and a corresponding major mode."
   :init
   (treesit-install-and-remap
    'javascript "https://github.com/tree-sitter/tree-sitter-javascript"
-   :revision "master"
+   ;; :revision "master"
+   :revision "v0.23.1"
    :source-dir "src"
    :modes '(js-mode javascript-mode)
    :remap 'js-ts-mode
@@ -398,7 +415,7 @@ specifying a source code block language name and a corresponding major mode."
   (treesit-install-and-remap
    'typescript "https://github.com/tree-sitter/tree-sitter-typescript"
    :revision "master"
-   :source-dir "src"
+   :source-dir "typescript"
    :modes '(typescript-mode)
    :remap 'typescript-ts-mode
    :org-src '("ts" . typescript-ts)))
@@ -410,7 +427,7 @@ specifying a source code block language name and a corresponding major mode."
   (treesit-install-and-remap
    'tsx "https://github.com/tree-sitter/tree-sitter-typescript"
    :revision "master"
-   :source-dir "src"
+   :source-dir "tsx"
    :modes '(tsx-ts-mode)
    :remap 'tsx-ts-mode
    :org-src '("tsx" . tsx-ts)))

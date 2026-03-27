@@ -18,7 +18,7 @@
    message-log-max 16384
    package-enable-at-startup nil
    load-prefer-newer noninteractive)
-  (add hook 'emacs-startup-hook
+  (add-hook 'emacs-startup-hook
     (lambda nil
       (setq gc-cons-threshold original-gc-cons-threshold))))
 
