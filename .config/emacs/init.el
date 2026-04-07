@@ -247,43 +247,6 @@
   :init
   (setq completion-in-region-function #'consult-completion-in-region))
 
-(use-package corfu
-  :ensure t
-  :bind (:map corfu-map
-              ("TAB" . corfu-next)
-              ([tab] . corfu-next)
-              ("S-TAB" . corfu-previous)
-              ([backtab] . corfu-previous)
-              ([remap completion-at-point] . corfu-complete)
-              ("RET" . corfu-complete-and-quit)
-              ("<return>" . corfu-complete-and-quit))
-  :commands (corfu-quit)
-  :custom
-  (corfu-cycle t)
-  (corfu-preselect-first t)
-  (corfu-scroll-margin 4)
-  (corfu-quit-no-match t)
-  (corfu-quit-at-boundary t)
-  (tab-always-indent 'complete)
-  :config
-  (defun corfu-complete-and-quit ()
-    (interactive)
-    (corfu-complete)
-    (corfu-quit))
-  :hook (after-init . global-corfu-mode))
-
-(use-package corfu-popupinfo
-  :bind (:map corfu-popupinfo-map
-              ("M-p" . corfu-popupinfo-scroll-down)
-              ("M-n" . corfu-popupinfo-scroll-up))
-  :hook (corfu-mode . corfu-popupinfo-mode)
-  :custom-face
-  (corfu-popupinfo ((t :height 1.0))))
-
-(use-package corfu-terminal
-  :unless (display-graphic-p)
-  :hook after-init)
-
 (use-package cape
   :after corfu
   :bind ("C-c p" . cape-prefix-map)
